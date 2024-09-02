@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveDistance = 1f;
     public LayerMask obstacleLayer;
+    public int score = 0;
     private bool isOnLog = false;
     private GameObject currentLog;
 
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         if (!Physics2D.OverlapCircle(targetPos, 0.1f, obstacleLayer))
         {
             transform.position = targetPos;
+            score += 1;
+            Debug.Log("Score: " + score);
             if (!isOnLog)
                 CheckWater();
             else
@@ -51,6 +54,12 @@ public class PlayerController : MonoBehaviour
             isOnLog = true;
             currentLog = collision.gameObject;
         }
+        else if (collision.gameObject.CompareTag("Coin"))
+        {
+            score += 10;
+            Debug.Log("Score: " + score);
+            Destroy(collision.gameObject);
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -64,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
     void CheckWater()
     {
-        // Check if the player is on water without a log
         if (Physics2D.OverlapCircle(transform.position, 0.1f, LayerMask.GetMask("Water")))
         {
             Die();
@@ -73,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
     void CheckOffScreen()
     {
-        // Check if the player is off-screen
         if (transform.position.x < -5 || transform.position.x > 5)
         {
             Die();
@@ -82,9 +89,7 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        // Handle player death (restart level, etc.)
         Debug.Log("Player Died");
-        // For example, reset the level
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
