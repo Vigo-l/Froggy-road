@@ -18,11 +18,9 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        void LateUpdate()
-        {
-            // Smoothly interpolate between the camera's current position and the target position
-            Vector3 targetPosition = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
-        }
+        // Smoothly interpolate between the camera's current position and the target position
+        Vector3 targetPosition = new Vector3(transform.position.x, player.position.y + offset.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.1f);
     }
+
 }
