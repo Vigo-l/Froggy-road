@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -48,6 +46,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Car"))
         {
             Die();
+            Debug.Log("tpichj");
         }
         else if (collision.gameObject.CompareTag("Log"))
         {
