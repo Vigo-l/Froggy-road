@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        CheckWater();
         Vector3 move = Vector3.zero;
 
         if (Input.GetKeyDown(KeyCode.W))
