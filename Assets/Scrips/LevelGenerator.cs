@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -93,11 +94,12 @@ public class LevelGenerator : MonoBehaviour
         int waterYPos = Random.Range(0, mapHeight);
 
         // Randomize log speed
-        float logSpeed = Random.Range(1f, 3f);
+        float logSpeed = Random.Range(2f, 10f);
+        int logDirection = Random.Range(0, 2);
 
         // Spawn the log
-        GameObject log = Instantiate(logPrefab, new Vector3(Random.Range(-mapWidth / 2, mapWidth / 2), waterYPos, 0), Quaternion.identity);
-        log.GetComponent<LogController>().speed = logSpeed;
+        GameObject log = Instantiate(logPrefab, new Vector3(logDirection == 0 ? -10 : 10, waterYPos, 0), Quaternion.identity);
+        log.GetComponent<LogController>().speed = logDirection == 0 ? logSpeed : -logSpeed;
     }
 
     void SpawnSafeSpace(int yPos)
