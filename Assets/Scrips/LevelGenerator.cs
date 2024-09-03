@@ -12,33 +12,9 @@ public class LevelGenerator : MonoBehaviour
     public int mapWidth = 10;
     public int mapHeight = 20;
 
-    public float carSpawnInterval = 0.05f; // Time between car spawns
-    public float logSpawnInterval = 0.1f; // Time between log spawns
-
-    private float carSpawnTimer = 0f;
-    private float logSpawnTimer = 0f;
-
     void Start()
     {
         GenerateLevel();
-    }
-
-    void Update()
-    {
-        carSpawnTimer += Time.deltaTime;
-        logSpawnTimer += Time.deltaTime;
-
-        if (carSpawnTimer >= carSpawnInterval)
-        {
-            SpawnCar();
-            carSpawnTimer = 0f;
-        }
-
-        if (logSpawnTimer >= logSpawnInterval)
-        {
-            SpawnLog();
-            logSpawnTimer = 0f;
-        }
     }
 
     void GenerateLevel()
@@ -49,15 +25,14 @@ public class LevelGenerator : MonoBehaviour
 
             if (laneType == 0) // Road
             {
-                Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity);
+                SpawnRoad(i);
             }
             else if (laneType == 1) // Water
             {
-                Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity); // Use road prefab or create a water prefab
+                SpawnLogs(i);
             }
             else // Safe Space
             {
-                Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity); // Safe space can be the same as road or different
                 SpawnSafeSpace(i);
             }
 
@@ -73,14 +48,15 @@ public class LevelGenerator : MonoBehaviour
         SpawnGoal(mapHeight);
     }
 
-    void SpawnCar()
+    void SpawnRoad(int yPos)
     {
-        // Find a random road y-position to spawn the car
-        int roadYPos = Random.Range(0, mapHeight);
+        Instantiate(roadPrefab, new Vector3(0, yPos, 0), Quaternion.identity);
 
-        // Randomize car speed and direction
-        int carDirection = Random.Range(0, 2); // 0: Left to Right, 1: Right to Left
-        float speed = Random.Range(2f, 5f);
+        int lanes = Random.Range(1, 4); // Randomize number of lanes (1-3)
+        for (int lane = 0; lane < lanes; lane++)
+        {
+            int carDirection = Random.Range(0, 2); // 0: Left to Right, 1: Right to Left
+            float speed = Random.Range(2f, 5f);
 
             GameObject car = Instantiate(
                 carPrefab,
@@ -91,7 +67,7 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    void SpawnLog()
+    void SpawnLogs(int yPos)
     {
         int logDirection = Random.Range(0, 2); // 0: Left to Right, 1: Right to Left
         int logCount = Random.Range(1, 3); // Random number of logs (1-2)
