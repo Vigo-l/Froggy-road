@@ -631,7 +631,7 @@ MonoBehaviour:
   carPrefab: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
   coinPrefab: {fileID: 6017325130597316290, guid: ea016af597321f44d8cedd7f8ae8f6fb, type: 3}
   staticObstaclePrefab: {fileID: 293256102118178407, guid: dcecd2e64eb621847851a8211ddf11d2, type: 3}
-  mapWidth: 20
+  mapWidth: 10
   mapHeight: 50
   carSpawnInterval: 0.25
   logSpawnInterval: 1
