@@ -41,25 +41,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
+
         if (collision.gameObject.CompareTag("Car"))
         {
+            Debug.Log("Collided with Car");
             Die();
-            Debug.Log("tpichj");
         }
         else if (collision.gameObject.CompareTag("Log"))
         {
+            Debug.Log("Collided with Log");
             isOnLog = true;
             currentLog = collision.gameObject;
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
+            Debug.Log("Collided with Coin");
             score += 10;
             Debug.Log("Score: " + score);
             Destroy(collision.gameObject);
         }
     }
+
+
 
     void OnCollisionExit2D(Collision2D collision)
     {

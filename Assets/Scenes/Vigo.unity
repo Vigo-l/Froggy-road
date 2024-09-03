@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 166991796}
   - component: {fileID: 166991798}
   - component: {fileID: 166991797}
+  - component: {fileID: 166991799}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -256,6 +257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166991795}
   m_CullTransparentMesh: 1
+--- !u!114 &166991799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166991795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b53c4c2a31fb1942a4a2eb6bb81c22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: {fileID: 928063148}
+  score: {fileID: 166991797}
 --- !u!1 &180879362
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +597,7 @@ GameObject:
   - component: {fileID: 301358665}
   - component: {fileID: 301358664}
   - component: {fileID: 301358668}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Log
   m_TagString: Log
   m_Icon: {fileID: 0}
@@ -855,7 +870,7 @@ GameObject:
   - component: {fileID: 771152505}
   - component: {fileID: 771152504}
   - component: {fileID: 771152503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -1048,7 +1063,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1071,7 +1086,7 @@ MonoBehaviour:
   moveDistance: 1
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   score: 0
 --- !u!212 &928063149
 SpriteRenderer:
@@ -1177,6 +1192,7 @@ MonoBehaviour:
   goalPrefab: {fileID: 264197442}
   mapWidth: 10
   mapHeight: 20
+  carSpawnInterval: 2
 --- !u!4 &1067486583
 Transform:
   m_ObjectHideFlags: 0
@@ -1511,7 +1527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927089166}
   - component: {fileID: 1927089165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StaticObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,6 +1606,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
   m_PrefabInstance: {fileID: 9161177880435060123}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &2100258850
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100258844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000019073486, y: 0.049211502}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 11.88, y: 8.91}
+    newSize: {x: 4.44, y: 8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10.502079, y: 5.662054}
+  m_EdgeRadius: 0
 --- !u!1001 &9161177880435060123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1601,6 +1662,18 @@ PrefabInstance:
     - target: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784389978630632322, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+      propertyPath: m_Size.x
+      value: 5.4138556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784389978630632322, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.4869274
       objectReference: {fileID: 0}
     - target: {fileID: 4930970357688565193, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1646,10 +1719,15 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7715919775713975506, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+    - {fileID: 4784389978630632322, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2100258850}
   m_SourcePrefab: {fileID: 100100000, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

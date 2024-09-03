@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -11,6 +12,7 @@ public class LevelGenerator : MonoBehaviour
 
     public int mapWidth = 10;
     public int mapHeight = 20;
+    public float carSpawnInterval = 2f; // Interval in seconds between car spawns
 
     void Start()
     {
@@ -55,6 +57,14 @@ public class LevelGenerator : MonoBehaviour
         int lanes = Random.Range(1, 4); // Randomize number of lanes (1-3)
         for (int lane = 0; lane < lanes; lane++)
         {
+            StartCoroutine(SpawnCars(yPos));
+        }
+    }
+
+    IEnumerator SpawnCars(int yPos)
+    {
+        while (true)
+        {
             int carDirection = Random.Range(0, 2); // 0: Left to Right, 1: Right to Left
             float speed = Random.Range(2f, 5f);
 
@@ -64,6 +74,8 @@ public class LevelGenerator : MonoBehaviour
                 Quaternion.identity
             );
             car.GetComponent<CarController>().speed = carDirection == 0 ? speed : -speed;
+
+            yield return new WaitForSeconds(carSpawnInterval);
         }
     }
 
