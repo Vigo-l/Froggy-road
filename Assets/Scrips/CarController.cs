@@ -6,9 +6,11 @@ public class CarController : MonoBehaviour
     private PlayerController _playerController;
     [SerializeField] private GameObject _playerObject;
 
-    private void Start()
+    private void Awake()
     {
+        _playerObject = GameObject.Find("Frog");
         _playerController = _playerObject.GetComponent<PlayerController>();
+        Debug.Log("car spawned" + _playerController);
     }
     void Update()
     {
@@ -21,7 +23,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

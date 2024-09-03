@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
 
         Debug.Log("Collision detected with: " + collision.gameObject.name);

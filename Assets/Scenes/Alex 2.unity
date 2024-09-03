@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 928063145}
   m_Layer: 0
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1351,6 +1351,10 @@ PrefabInstance:
     - target: {fileID: 862660227994999617, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784389978630632322, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4930970357688565193, guid: 2a36fea3f32669541bf9df537607fcbb, type: 3}
       propertyPath: m_LocalPosition.x
