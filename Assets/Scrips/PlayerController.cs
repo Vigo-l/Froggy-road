@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -46,20 +44,23 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision detected with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Car"))
         {
+            Debug.Log("Collided with Car");
             Die();
         }
         else if (collision.gameObject.CompareTag("Log"))
         {
+            Debug.Log("Collided with Log");
             isOnLog = true;
             currentLog = collision.gameObject;
         }
         else if (collision.gameObject.CompareTag("Coin"))
         {
+            Debug.Log("Collided with Coin");
             score += 10;
             Debug.Log("Score: " + score);
             Destroy(collision.gameObject);
@@ -67,10 +68,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
-    }
+
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Log"))
