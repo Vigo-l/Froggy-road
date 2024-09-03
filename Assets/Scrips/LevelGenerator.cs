@@ -4,6 +4,8 @@ public class LevelGenerator : MonoBehaviour
 {
 
     public GameObject roadPrefab;
+    public GameObject waterPrefab;
+    public GameObject safePrefab;
     public GameObject logPrefab;
     public GameObject carPrefab;
     public GameObject coinPrefab;
@@ -54,11 +56,11 @@ public class LevelGenerator : MonoBehaviour
             }
             else if (laneType == 1) // Water
             {
-                Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity); // Use road prefab or create a water prefab
+                Instantiate(waterPrefab, new Vector3(0, i, 0), Quaternion.identity); // Use road prefab or create a water prefab
             }
             else // Safe Space
             {
-                Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity); // Safe space can be the same as road or different
+                Instantiate(safePrefab, new Vector3(0, i, 0), Quaternion.identity); // Safe space can be the same as road or different
                 SpawnSafeSpace(i);
             }
 
