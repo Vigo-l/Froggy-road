@@ -6,13 +6,13 @@ public class GoalController : MonoBehaviour
     public GameObject winScreen; // Assign the "You Win" screen in the inspector
     public float restartDelay = 3f; // Time before restarting the game
 
-    private bool gameWon = false;
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !gameWon)
+        if (other.CompareTag("Player"))
         {
-            gameWon = true;
+           
             ShowWinScreen();
         }
     }
