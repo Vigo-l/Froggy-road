@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+
     public GameObject roadPrefab;
     public GameObject logPrefab;
     public GameObject carPrefab;
@@ -89,9 +90,9 @@ public class LevelGenerator : MonoBehaviour
             );
             car.GetComponent<CarController>().speed = carDirection == 0 ? speed : -speed;
         }
-    }
+    
 
-    void SpawnLog()
+    void SpawnLog(int yPos)
     {
         int logDirection = Random.Range(0, 2); // 0: Left to Right, 1: Right to Left
         int logCount = Random.Range(1, 3); // Random number of logs (1-2)
