@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveDistance = 1f;
     public LayerMask obstacleLayer;
+    public LayerMask coinLayer;
     public int score = 0;
     private bool isOnLog = false;
     private GameObject currentLog;
@@ -16,8 +17,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
             move = Vector3.up * moveDistance;
-        else if (Input.GetKeyDown(KeyCode.S))
-            move = Vector3.down * moveDistance;
+        //else if (Input.GetKeyDown(KeyCode.S))
+           // move = Vector3.down * moveDistance;
         else if (Input.GetKeyDown(KeyCode.A))
             move = Vector3.left * moveDistance;
         else if (Input.GetKeyDown(KeyCode.D))
@@ -40,11 +41,14 @@ public class PlayerController : MonoBehaviour
                 CheckWater();
             else
                 CheckOffScreen();
+            
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Car"))
         {
             Die();
@@ -60,8 +64,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Score: " + score);
             Destroy(collision.gameObject);
         }
+
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
+    }
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Log"))
@@ -86,6 +95,7 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
+    
 
     void Die()
     {
