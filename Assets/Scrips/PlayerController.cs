@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
             move = Vector3.up * moveDistance;
         //else if (Input.GetKeyDown(KeyCode.S))
-           // move = Vector3.down * moveDistance;
+        // move = Vector3.down * moveDistance;
         else if (Input.GetKeyDown(KeyCode.A))
             move = Vector3.left * moveDistance;
         else if (Input.GetKeyDown(KeyCode.D))
@@ -39,13 +39,14 @@ public class PlayerController : MonoBehaviour
                 CheckWater();
             else
                 CheckOffScreen();
-            
+
         }
 
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+
         Debug.Log("Collision detected with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Car"))
         {
@@ -94,9 +95,9 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
-    
 
-    void Die()
+
+    public void Die()
     {
         Debug.Log("Player Died");
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
