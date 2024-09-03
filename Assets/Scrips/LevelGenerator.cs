@@ -55,7 +55,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity);
             }
-            else if (laneType >8 && laneType < 18) // Water
+            else if (laneType >7 && laneType < 10) // Water
             {
                 Instantiate(waterPrefab, new Vector3(0, i, 0), Quaternion.identity); // Use road prefab or create a water prefab
             }
