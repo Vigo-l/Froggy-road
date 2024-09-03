@@ -48,13 +48,13 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int i = 0; i < mapHeight; i++)
         {
-            int laneType = Random.Range(0, 3); // 0: Road, 1: Water, 2: Safe Space
+            int laneType = Random.Range(0, 20); // 0: Road, 1: Water, 2: Safe Space
 
-            if (laneType == 0) // Road
+            if (laneType < 7) // Road
             {
                 Instantiate(roadPrefab, new Vector3(0, i, 0), Quaternion.identity);
             }
-            else if (laneType == 1) // Water
+            else if (laneType >8 && laneType < 18) // Water
             {
                 Instantiate(waterPrefab, new Vector3(0, i, 0), Quaternion.identity); // Use road prefab or create a water prefab
             }

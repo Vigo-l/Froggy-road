@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3259158806965959439}
   - component: {fileID: 8367263812829848103}
   - component: {fileID: 5920064383142367417}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Log
   m_TagString: Log
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4494724551233485026}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
